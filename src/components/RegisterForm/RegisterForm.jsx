@@ -1,4 +1,11 @@
-import React, { useState } from 'react'; 
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { collection, addDoc} from 'firebase/firestore';
+import { serverTimestamp } from '@firebase/firestore'
+import { SlArrowLeftCircle } from "react-icons/sl";
+import { db } from '../../utils/firebase';
+import bcrypt from 'bcryptjs';
+
 import './RegisterForm.css';
 
 const RegisterForm = () => {
@@ -10,12 +17,37 @@ const RegisterForm = () => {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
 
-    const handleRegister = () => {
+    const navigate = useNavigate();
 
+    const handleRegister = async () => {
+        if (password !== confirmPassword) {
+            console.log("Passwords do not match");
+        }
+        else {
+
+            // Encrypts user password using Bcryptjs.
+            const hashedPassword = bcrypt.hashSync(password, 10);
+
+            await addDoc(collection(db, "users"), {
+                firstName: firstName,
+                lastName: lastName,
+                userName: userName,
+                email: email,
+                password: hashedPassword,
+                createdAt: serverTimestamp()
+            });
+            console.log("User registered");
+            navigate("/");
+        }
+    };
+
+    const handleBack = () => {
+        navigate("/");
     };
 
     return (
         <div className='wrapper'>
+            <span onClick={handleBack}><SlArrowLeftCircle /></span>
             <h1>Register</h1>
             <form action={handleRegister}>
                 <div className='input-box'>

@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import { useNavigate, userNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { FaUser, FaLock } from "react-icons/fa";
 
-import { collection, getDocs, addDoc} from 'firebase/firestore';
-import { serverTimestamp } from '@firebase/firestore'
+import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../../utils/firebase';
 
 import bcrypt from 'bcryptjs';
@@ -34,23 +33,6 @@ const LoginSignup = () => {
 
         isUser ? navigate("movies") : console.log("User does not exist");
         
-    }
-
-    const addUser = async () => {
-
-        // Encrypts user password using Bcryptjs.
-        const salt = bcrypt.genSaltSync(10);
-        const hash = bcrypt.hashSync("temp123", salt);
-
-        const usersCollection = collection(db, "users");
-        const newUser = {
-            firstname: "John",
-            lastname: "Doe",
-            email: "temp123@gmail.com",
-            password: hash,
-            createdAt: serverTimestamp()
-        }  
-        await addDoc(usersCollection, newUser);
     }
 
     return (
