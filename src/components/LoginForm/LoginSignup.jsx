@@ -58,6 +58,7 @@ const LoginSignup = () => {
                     <FaLock className='icons'/>
                 </div>
 
+                {/* TODO: Remember me and Forgot password */}
                 <div className="remember-password">
                     <label><input type="checkbox"/>Remember me</label>
                     <a href="#">Forgot password?</a>

@@ -29,9 +29,9 @@ const RegisterForm = () => {
             const hashedPassword = bcrypt.hashSync(password, 10);
 
             await addDoc(collection(db, "users"), {
-                firstName: firstName,
-                lastName: lastName,
-                userName: userName,
+                firstname: firstName,
+                lastname: lastName,
+                username: userName,
                 email: email,
                 password: hashedPassword,
                 createdAt: serverTimestamp()
