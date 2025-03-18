@@ -1,3 +1,21 @@
+/*
+    This file contains the data of the movies that will be displayed in the application.
+    Each movie has the following properties:
+    - id: The unique identifier of the movie.
+    - title: The title of the movie.
+    - director: The director of the movie.
+    - year: The year the movie was released.
+    - image: The image of the movie.
+    - genre: The genre of the movie.
+    - runtime: The runtime of the movie.
+    - rating: The rating of the movie.
+    - plot: The plot of the movie.
+    - slug: The slug of the movie.
+
+    This file will be imported to Google Firebase Cloud database to store the data of the movies upon initialization.
+
+*/
+
 import imageMovie1 from './components/Assets/1.jpg';
 import imageMovie2 from './components/Assets/2.jpg';
 import imageMovie3 from './components/Assets/3.jpg';
