@@ -3,6 +3,7 @@ import './App.css';
 import LoginSignup from './components/LoginForm/LoginSignup';
 import MovieListings from './components/MovieListings/MovieListings';
 import RegisterForm from './components/RegisterForm/RegisterForm';
+import MovieDetails from './components/MovieDetails/MovieDetails';
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
           <Route exact path="/" element={<LoginSignup />} />
           <Route path="/movies" element={<MovieListings />} />
           <Route path="/register" element={<RegisterForm/>} />
+          <Route path="/movie/:slug" element={<MovieDetails />} />
         </Routes>
       </Router>
       

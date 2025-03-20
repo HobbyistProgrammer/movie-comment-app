@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const MovieListingCell = ({ data }) => {
-  const { title, director, year, genre, runtime, rating, image, slug } = data;
+  const { id, title, director, year, genre, runtime, rating, image, slug } = data;
 
   return (
     <div className="bg-white rounded-lg shadow-md overflow-hidden">
@@ -14,7 +14,7 @@ const MovieListingCell = ({ data }) => {
         <p className="text-sm text-gray-600">Genre: {genre}</p>
         <p className="text-sm text-gray-600">Runtime: {runtime}</p>
         <p className="text-sm text-gray-600">Rating: {rating}</p>
-        <Link to={`/movie/${slug}`} className="text-blue-600 text-sm mt-2 inline-block">
+        <Link to={`/movie/${slug}`} state={{ data }} className="text-blue-600 text-sm mt-2 inline-block">
           View Details
         </Link>
       </div>
